@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MahaBHUJALkosh</title>
+    <!-- Include Bootstrap CSS (Bootstrap 5) -->
+    <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.min.css" />
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" type="text/css" href="./css/styles.css" />
+
+    <script src="./lib/jquery/jquery.min.js"></script>
+
+    <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="./lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> -->
+
+    <script>
+      // Global variable
+      let survey_app_api_url = "https://mobgis.ceinsys.com:2443/survey_app_api";
+      // let survey_app_api_url =
+      //   "https://geoportal.ceinsys.com/survey_app_api_test";
+      let dashboard_url = "https://geoportal.ceinsys.com/dashboard";
+      let qaqc_url = "https://mobgis.ceinsys.com:2443/qaqc";
+      let geoportal_url = "https://geoportal.ceinsys.com/dataintegration";
+      let datacontent_url = "https://mobgis.ceinsys.com:2443/datacontent";
+    </script>
+  </head>
+
+  <body class="d-flex flex-column h-100">
+    <header>
+      <nav class="navbar navbar-expand-lg lp-navbar">
+        <div class="container-fluid">
+          <!-- Logo on the left -->
+          <a class="navbar-brand" href="#">
+            <img src="./images/satyamev-Jayte.png" alt="Logo" class="lp-nav" />
+          </a>
+
+          <!-- Centered text with subtext -->
+          <div class="mx-auto text-center">
+            <span class="navbar-text">
+              <label
+                class="lp-text1"
+                data-bs-toggle="tooltip"
+                data-bs-placement="bottom"
+                title="महा-भूजल-कोष"
+                >MahaBHUJALkosh</label
+              >
+              <br />
+              <p class="lp-text2">
+                A Digital Repository & Web Geo-Portal Based Decision Support
+                System
+              </p>
+            </span>
+          </div>
+
+          <!-- Buttons on the right for all screen sizes -->
+          <div class="btn-group">
+            <button
+              type="button"
+              class="btn btn-outline-primary lp-button1 text-white toggle lp-drop"
+              data-bs-toggle="dropdown"
+              data-bs-display="static"
+              aria-expanded="false"
+            >
+              <i class="fas fa-bars" style="cursor: pointer"></i>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li>
+                <a class="dropdown-item" href="./About.html" type="button"
+                  ><i class="fas fa-info-circle"></i>&nbsp;About
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="./Thematic.html" type="button"
+                  ><i class="fas fa-users"></i>&nbsp;Citizen Access
+                </a>
+              </li>
+              <li>
+                <button
+                  class="dropdown-item"
+                  type="button"
+                  data-bs-toggle="modal"
+                  data-bs-target="#loginModal"
+                >
+                  <i class="fas fa-user"></i>&nbsp;Registered User Access
+                </button>
+              </li>
+            </ul>
+          </div>
+          <!-- <button id="nextPageIcon" class="btn btn-outline-primary lp-button1 text-white" style="cursor: pointer;"
+            data-bs-toggle="tooltip" data-bs-placement="bottom"
+            title="Rajiv Gandhi drinking water mission I.V – 1:50k ground water prospect map">
+            <i class="fas fa-bars" style="cursor: pointer"></i>
+        </button>&nbsp; -->
+          <!-- <button type="button" class="btn btn-outline-primary text-white ml-auto" data-bs-toggle="modal" data-bs-target="#loginModal"
+            style="cursor: pointer" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Login">
+            <i class="fas fa-user" style="cursor: pointer"></i>
+        </button> -->
+        </div>
+      </nav>
+    </header>
+
+    <!-- The Modal -->
+
+    <div class="modal" id="loginModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-lg p-3 bg-dark" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="row">
+              <div
+                class="col-md-12 d-flex justify-content-center align-items-center"
+              >
+                <form class="w-100">
+                  <h5 class="text-center text-primary pb-3" id="contentHeading">
+                    Welcome To MahaBHUJALkosh
+                  </h5>
+
+                  <div class="row lp-row1">
+                    <div class="col-md-3">
+                      <div class="form-check form-check-inline text-center">
+                        <input
+                          type="radio"
+                          id="radiotab1"
+                          name="radiotabGroup"
+                          class="hidden-radio"
+                          value="dc"
+                        />
+                        <label for="radiotab1" class="image-label">
+                          <img
+                            src="./images/data-content-logo.png"
+                            alt="Image1"
+                            id="toggleButton1"
+                          />
+                          <div class="lp-label-width1">Data Content</div>
+                        </label>
+                      </div>
+                    </div>
+
+                    <div class="col-md-3">
+                      <div class="form-check form-check-inline text-center">
+                        <input
+                          type="radio"
+                          id="radiotab2"
+                          name="radiotabGroup"
+                          class="hidden-radio"
+                          value="d"
+                        />
+                        <label for="radiotab2" class="image-label">
+                          <img
+                            src="./images/dashboard-logo.png"
+                            alt="Image2"
+                            id="toggleButton2"
+                          />
+                          <div>Dashboard</div>
+                        </label>
+                      </div>
+                    </div>
+
+                    <div class="col-md-3">
+                      <div class="form-check form-check-inline text-center">
+                        <input
+                          type="radio"
+                          id="radiotab3"
+                          name="radiotabGroup"
+                          class="hidden-radio"
+                          value="q"
+                        />
+                        <label for="radiotab3" class="image-label">
+                          <img
+                            src="./images/qa_qc-logo.png"
+                            alt="Image3"
+                            id="toggleButton3"
+                          />
+                          <div>QA/QC</div>
+                        </label>
+                      </div>
+                    </div>
+
+                    <div class="col-md-3">
+                      <div class="form-check form-check-inline text-center p-0">
+                        <input
+                          type="radio"
+                          id="radiotab4"
+                          name="radiotabGroup"
+                          class="hidden-radio"
+                          value="g"
+                        />
+                        <label for="radiotab4" class="image-label">
+                          <img
+                            src="./images/web-portal-logo1.png"
+                            alt="Image4"
+                            id="toggleButton4"
+                          />
+                          <div class="lp-label-width">Geo-Portal</div>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row hidden" id="content2">
+                    <div class="form-group col-md-6 mx-auto">
+                      <label for="username"
+                        ><i class="fas fa-user"></i>&nbsp;<b>Username</b></label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="username"
+                        placeholder="Enter username"
+                      />
+                    </div>
+
+                    <div class="form-group col-md-6 mx-auto">
+                      <label for="password"
+                        ><i class="fas fa-key"></i>&nbsp;<b>Password</b></label
+                      >
+                      <input
+                        type="password"
+                        class="form-control"
+                        id="password"
+                        placeholder="Enter password"
+                      />
+                    </div>
+
+                    <div class="col-md-12 text-center pt-2">
+                      <button
+                        id="login-Button"
+                        class="btn btn-primary"
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="bottom"
+                        title="Click Here To Login"
+                      >
+                        Login
+                      </button>
+                      <button
+                        class="btn btn-secondary back-button"
+                        id="backButton"
+                      >
+                        Back
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2nd Section: Image and Slideshow -->
+    <main class="flex-shrink-0">
+      <div class="container-fluid d-flex flex-column h-100 lp-cont">
+        <div class="row d-flex mt-md-2 mb-md-3 h-100">
+          <div class="col-sm-12 h-100">
+            <div class="row lp-row mx-md-4 mt-md-2 d-flex-1 h-100">
+              <div class="col-md-3 p-0 lp-section1">
+                <img
+                  src="./images/India-Boundry1.png"
+                  data-toggle="tooltip"
+                  title="India"
+                  alt="Image 1"
+                  class="img-fluid lp-section4 lp-img"
+                />
+              </div>
+              <div class="col-md-4 lp-section1">
+                <div class="lp-slideshow-container text-center">
+                  <img
+                    src="./images/Maharashtra12.jpg"
+                    alt="Image 1"
+                    data-toggle="tooltip"
+                    title="Maharashtra"
+                    class="img-fluid"
+                  />
+                  <img
+                    src="./images/Maharashtra Satellite NCC2.jpg"
+                    alt="Image 2"
+                    data-toggle="tooltip"
+                    title="Maharashtra Satellite NCC"
+                    class="img-fluid"
+                  />
+                  <img
+                    src="./images/Maharashtra Satellite FCC2.jpg"
+                    alt="Image 3"
+                    data-toggle="tooltip"
+                    title="Maharashtra Satellite FCC"
+                    class="img-fluid"
+                  />
+                  <img
+                    src="./images/Maharashtra Hillshade2.jpg"
+                    alt="Image 4"
+                    data-toggle="tooltip"
+                    title="Maharashtra Hillshade"
+                    class="img-fluid"
+                  />
+                  <img
+                    src="./images/Maharashtra Hillshade & Drainage.jpg"
+                    alt="Image 5"
+                    data-toggle="tooltip"
+                    title="Maharashtra Hillshade & Drainage"
+                    class="img-fluid"
+                  />
+                </div>
+              </div>
+              <div class="col-md-5 p-0">
+                <img
+                  src="./images/LPG.jpg"
+                  alt="Image 1"
+                  class="img-fluid lp-section3 w-100 lp-img"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row d-flex-1 h-100">
+          <div class="col-sm-12">
+            <!-- <div class="container-fluid "> -->
+            <div class="row pt-md-1 justify-content-center d-flex">
+              <!-- First Set of Elements -->
+              <div class="col-md-6 text-center h-100 lp-height">
+                <a
+                  class="lp-text8"
+                  intent="sucess"
+                  href="https://gsda.maharashtra.gov.in/english/"
+                  target="blank"
+                  style="cursor: pointer"
+                >
+                  <img
+                    class="lp-logo1"
+                    src="./images/GSDA.png"
+                    data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    title="Groundwater Surveys & Development Agency"
+                    alt="Logo 2"
+                    class="img-fluid"
+                  />
+                  <div class="text lp-text3">
+                    <br /><br /><br /><br />
+                    <!-- <p class="lp-text4"><i>Developed for</i></p> -->
+                    <p class="lp-text5">
+                      <b>Groundwater Surveys & Development Agency (GSDA)</b>
+                    </p>
+                    <p class="lp-text6">
+                      Water Supply And Sanitation Department, Govt. of
+                      Maharashtra
+                    </p>
+                  </div>
+                </a>
+              </div>
+
+              <!-- Second Set of Elements -->
+              <div class="col-md-6 text-center lp-height">
+                <a
+                  class="lp-text8"
+                  href="https://mrsac.gov.in/MRSAC/"
+                  target="_blank"
+                  style="cursor: pointer"
+                >
+                  <img
+                    class="lp-logo1"
+                    src="./images/MRSAC.png"
+                    data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    title="Maharashtra Remote Sensing Application Centre"
+                    alt="Logo 2"
+                    class="img-fluid"
+                  />
+                  <div class="text lp-text3">
+                    <br /><br /><br /><br />
+                    <!-- <p class="lp-text4"><i>Developed by</i></p> -->
+                    <p class="lp-text5">
+                      <b
+                        >Maharashtra Remote Sensing Application Centre
+                        (MRSAC)</b
+                      >
+                    </p>
+                    <p class="lp-text6">
+                      Autonomous Body of Planning Department, Govt. of
+                      Maharashtra
+                    </p>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- </div> -->
+        <div class="row d-flex-1 h-100">
+          <div class="col-sm-12 d-flex-1 lp-section2 p-3">
+            <!-- <div class="container-fluid "> -->
+            <div class="row carousel-pause-trigger">
+              <div class="col-md-12 text-center">
+                <div class="lp-scroll">
+                  <div class="scrollableContent">
+                    <!-- <div class="slide">
+                    <div class="lp-sliding-box" data-bs-toggle="tooltip" data-bs-placement="top"
+                      title="Maharashtra Remote Sensing Application Centre">
+                      <img src="./images/MRSAC.png" alt="Logo 1" class="lp-image" />
+                      <div class="lp-transparent-footer">
+                        <a class="lp-text8" intent="sucess" href="https://mrsac.gov.in/MRSAC/pages/history_and_genesis/"
+                          target="_blank" style="cursor: pointer">
+                          MRSAC
+                        </a>
+                      </div>
+                    </div>
+                  </div> -->
+
+                    <!-- <div class="slide">
+                    <div class="lp-sliding-box" data-bs-toggle="tooltip" data-bs-placement="top"
+                      title="Groundwater Surveys & Development Agency">
+                      <img src="./images/GSDA.png" alt="Logo 1" class="lp-image" />
+                      <div class="lp-transparent-footer">
+                        <a class="lp-text8" intent="sucess" href="https://gsda.maharashtra.gov.in/english/"
+                          target="blank" style="cursor: pointer">
+                          GSDA
+                        </a>
+                      </div>
+                    </div>
+                  </div> -->
+
+                    <div class="slide">
+                      <a
+                        href="http://117.240.213.118:6080/wssd/"
+                        target="_blank"
+                        style="cursor: pointer"
+                      >
+                        <div
+                          data-bs-toggle="tooltip"
+                          data-bs-placement="top"
+                          title="Water Supply And Sanitation Department"
+                        >
+                          <img
+                            src="./images/wssd.jpg"
+                            alt="Logo 1"
+                            class="lp-image"
+                          />
+                          <!--    <div class="lp-transparent-footer">
+                          <a class="lp-text8" intent="sucess" href="http://117.240.213.118:6080/wssd/" target="_blank"
+                            style="cursor: pointer">
+                            WSSD
+                          </a>
+                        </div> -->
+                        </div>
+                      </a>
+                    </div>
+                    <div class="slide">
+                      <a
+                        href="http://cgwb.gov.in/"
+                        target="_blank"
+                        style="cursor: pointer"
+                      >
+                        <div
+                          data-bs-toggle="tooltip"
+                          data-bs-placement="top"
+                          title="Central Ground Water Board"
+                        >
+                          <img
+                            src="./images/CGWBLogo1.jpg"
+                            alt="Logo 2"
+                            class="lp-image"
+                          />
+                          <!-- <div class="lp-transparent-footer">
+                          <a class="lp-text8" intent="sucess" href="http://cgwb.gov.in/" target="_blank"
+                            style="cursor: pointer">
+                            CGWB
+                          </a>
+                        </div> -->
+                        </div>
+                      </a>
+                    </div>
+
+                    <div class="slide">
+                      <a
+                        href="https://nwa.mah.nic.in/"
+                        target="_blank"
+                        style="cursor: pointer"
+                      >
+                        <div
+                          href="https://nwa.mah.nic.in/"
+                          data-bs-toggle="tooltip"
+                          data-bs-placement="top"
+                          title="National Water Academy"
+                        >
+                          <img
+                            src="./images/NWA.jpg"
+                            alt="Logo 2"
+                            class="lp-image"
+                          />
+                          <!-- <div class="lp-transparent-footer">
+                          <a class="lp-text8" intent="sucess" href="https://nwa.mah.nic.in/" target="_blank"
+                            style="cursor: pointer">
+                            NWA
+                          </a>
+                        </div> -->
+                        </div>
+                      </a>
+                    </div>
+                    <div class="slide">
+                      <a
+                        href="https://www.gsi.gov.in/webcenter/portal/OCBIS"
+                        target="_blank"
+                        style="cursor: pointer"
+                      >
+                        <div
+                          data-bs-toggle="tooltip"
+                          data-bs-placement="top"
+                          title=" Geological Survey of India"
+                        >
+                          <img
+                            src="./images/gsi.png"
+                            alt="Logo 2"
+                            class="lp-image"
+                          />
+                          <!-- <div class="lp-transparent-footer">
+                          <a class="lp-text8" intent="sucess" href="https://www.gsi.gov.in/webcenter/portal/OCBIS"
+                            target="_blank" style="cursor: pointer">
+                            GSI
+                          </a>
+                        </div> -->
+                        </div>
+                      </a>
+                    </div>
+                    <div class="slide">
+                      <a
+                        href="https://bhukosh.gsi.gov.in/Bhukosh/Public"
+                        target="blank"
+                        style="cursor: pointer"
+                      >
+                        <div
+                          data-bs-toggle="tooltip"
+                          data-bs-placement="top"
+                          title="Bhukosh"
+                        >
+                          <img
+                            src="./images/gsi.png"
+                            alt="Logo 1"
+                            class="lp-image"
+                          />
+                          <!-- <div class="lp-transparent-footer">
+                          <a class="lp-text8" intent="sucess" href="https://bhukosh.gsi.gov.in/Bhukosh/Public"
+                            target="blank" style="cursor: pointer">
+                            BHUKOSH
+                          </a>
+                        </div> -->
+                        </div>
+                      </a>
+                    </div>
+                    <div class="slide">
+                      <a
+                        href="https://bhuvan.nrsc.gov.in/"
+                        target="_blank"
+                        style="cursor: pointer"
+                      >
+                        <div
+                          data-bs-toggle="tooltip"
+                          data-bs-placement="top"
+                          title="Bhuvan"
+                        >
+                          <img
+                            src="./images/bhuvan-logo1.png"
+                            alt="Logo 1"
+                            class="lp-image"
+                          />
+                          <!-- <div class="lp-transparent-footer">
+                          <a class="lp-text8" intent="sucess" href="https://bhuvan.nrsc.gov.in/" target="_blank"
+                            style="cursor: pointer">
+                            BHUVAN
+                          </a>
+                        </div> -->
+                        </div>
+                      </a>
+                    </div>
+                    <div class="slide">
+                      <a
+                        href="https://www.isro.gov.in/"
+                        target="_blank"
+                        style="cursor: pointer"
+                      >
+                        <div
+                          data-bs-toggle="tooltip"
+                          data-bs-placement="top"
+                          title="Indian Space Research Organisation"
+                        >
+                          <img
+                            src="./images/Isro.png"
+                            alt="Logo 2"
+                            class="lp-image"
+                          />
+                          <!-- <div class="lp-transparent-footer">
+                          <a class="lp-text8" intent="sucess" href="https://www.isro.gov.in/" target="_blank"
+                            style="cursor: pointer">
+                            ISRO
+                          </a>
+                        </div> -->
+                        </div>
+                      </a>
+                    </div>
+                    <div class="slide">
+                      <a
+                        href="http://mrsac.maharashtra.gov.in/smartvillage/"
+                        target="_blank"
+                        style="cursor: pointer"
+                      >
+                        <div
+                          data-bs-toggle="tooltip"
+                          data-bs-placement="top"
+                          title="MRSAC Smart Village"
+                        >
+                          <img
+                            src="./images/MRSAC.png"
+                            alt="Logo 1"
+                            class="lp-image"
+                          />
+                          <!-- <div class="lp-transparent-footer">
+                          <a class="lp-text10" intent="sucess" href="http://mrsac.maharashtra.gov.in/smartvillage/"
+                            target="_blank" style="cursor: pointer">
+                            SMART-VILLAGE
+                          </a>
+                        </div> -->
+                        </div>
+                      </a>
+                    </div>
+                    <div class="slide">
+                      <a
+                        href="https://nbsslup.icar.gov.in/"
+                        target="_blank"
+                        style="cursor: pointer"
+                      >
+                        <div
+                          data-bs-toggle="tooltip"
+                          data-bs-placement="top"
+                          title="National Bureau of Soil Survey and Land Use Planning"
+                        >
+                          <img
+                            src="./images/NBSS&LUP.jpg"
+                            alt="Logo 1"
+                            class="lp-image"
+                          />
+                          <!-- <div class="lp-transparent-footer">
+                          <a class="lp-text8" intent="sucess" href="https://nbsslup.icar.gov.in/" target="_blank"
+                            style="cursor: pointer">
+                            NBSS & LUP
+                          </a>
+                        </div> -->
+                        </div>
+                      </a>
+                    </div>
+                    <div class="slide">
+                      <a
+                        href="https://www.surveyofindia.gov.in/"
+                        target="_blank"
+                        target="_blank"
+                        style="cursor: pointer"
+                      >
+                        <div
+                          data-bs-toggle="tooltip"
+                          data-bs-placement="top"
+                          title="Survey of India"
+                        >
+                          <img
+                            src="./images/SurveyOfIndia1.jpg"
+                            alt="Logo 2"
+                            class="lp-image"
+                          />
+                          <!-- <div class="lp-transparent-footer">
+                          <a class="lp-text8" intent="sucess" href="https://www.surveyofindia.gov.in/" target="_blank"
+                            target="_blank" style="cursor: pointer">
+                            SOI
+                          </a>
+                        </div> -->
+                        </div>
+                      </a>
+                    </div>
+                    <div class="slide">
+                      <a
+                        href="https://indiawris.gov.in/wris/#/"
+                        target="_blank"
+                        style="cursor: pointer"
+                      >
+                        <div
+                          data-bs-toggle="tooltip"
+                          data-bs-placement="top"
+                          title="Water Resource Information System "
+                        >
+                          <img
+                            src="./images/wris.jpg"
+                            alt="Logo 2"
+                            class="lp-image"
+                          />
+                          <!-- <div class="lp-transparent-footer">
+                          <a class="lp-text8" intent="sucess" href="https://indiawris.gov.in/wris/#/" target="_blank"
+                            style="cursor: pointer">
+                            WRIS
+                          </a>
+                        </div> -->
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- </div> -->
+        </div>
+      </div>
+    </main>
+    <footer class="footer mt-auto py-1 lp-footer">
+      <div class="container-fluid lp-footer">
+        <div class="row">
+          <div class="col-md-6 text-center text-md-start">
+            <span
+              ><a
+                class="lp-text8 footer-text"
+                href="https://www.ceinsys.com/"
+                target="_blank"
+                style="cursor: pointer"
+                >Developed and maintained by
+                <strong class="text-primary"> CEINSYS TECH LTD.</strong></a
+              ></span
+            >
+          </div>
+
+          <div class="col-md-6 text-center text-md-end">
+            <div class="lp-disclaimer text-white footer-text">
+              <strong class="text-warning">Disclaimer :</strong> This expressly
+              prohibits the copy or duplication of any resources.
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Initialize Bootstrap tooltips
+      $(function () {
+        $('[data-bs-toggle="tooltip"]').tooltip();
+      });
+
+      // JavaScript code to handle slideshow functionality
+      var slideIndex = 0;
+      showSlides();
+
+      function showSlides() {
+        var slides = document
+          .getElementsByClassName("lp-slideshow-container")[0]
+          .getElementsByTagName("img");
+        for (var i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) {
+          slideIndex = 1;
+        }
+        slides[slideIndex - 1].style.display = "block";
+        setTimeout(showSlides, 2000); // Change slide every 2 seconds
+      }
+    </script>
+
+    <script>
+      // JavaScript code to handle login button to redirect to the next page
+      const loginButton = document.getElementById("login-Button");
+      loginButton.addEventListener("click", function () {
+        let username = document.getElementById("username").value;
+        let password = document.getElementById("password").value;
+
+        loginButton.innerHTML = "Please wait...";
+        loginButton.setAttribute("disabled", true);
+
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+
+        fetch(`${survey_app_api_url}/api/login`, {
+          method: "POST",
+          headers: myHeaders,
+          body: JSON.stringify({
+            username: username,
+            password: password,
+          }),
+          redirect: "follow",
+        })
+          .then((response) => response.json())
+          .then((response) => {
+            try {
+              if (!response) throw new Error("No response from server");
+              if (!response.status) throw new Error(response.error);
+              let redirectpage = [
+                ...document.getElementsByName("radiotabGroup"),
+              ].find((n) => n.checked).value;
+              if (redirectpage == "d")
+                window.location.href = `${dashboard_url}?u=${username}&app_token=${response.data.token}`;
+              else if (redirectpage == "q")
+                window.location.href = `${qaqc_url}?u=${username}&app_token=${response.data.token}`; //&role=${response.data.role}&type=${response.data.user_type}`;
+              else if (redirectpage == "g")
+                window.location.href = `${geoportal_url}?app_token=${response.data.token}`;
+              else if (redirectpage == "dc")
+                window.location.href = `${datacontent_url}?app_token=${response.data.token}`;
+            } catch (e) {
+              console.error(e);
+              alert(e.message);
+              loginButton.innerHTML = "Login";
+              loginButton.removeAttribute("disabled");
+            }
+          })
+          .catch((error) => {
+            console.error("error", error);
+            loginButton.innerHTML = "Login";
+            loginButton.removeAttribute("disabled");
+          });
+      });
+    </script>
+    <script>
+      $(document).ready(function () {
+        $("#toggleButton1").on("click", function () {
+          $(".lp-row1").hide();
+          $("#content2").show();
+          $("#contentHeading").text("Data Content");
+        });
+
+        $("#toggleButton2").on("click", function () {
+          $(".lp-row1").hide();
+          $("#content2").show();
+          $("#contentHeading").text("Dashboard");
+        });
+
+        $("#toggleButton3").on("click", function () {
+          $(".lp-row1").hide();
+          $("#content2").show();
+          $("#contentHeading").text("QA/QC");
+        });
+
+        $("#toggleButton4").on("click", function () {
+          $(".lp-row1").hide();
+          $("#content2").show();
+          $("#contentHeading").text("Geo-Portal");
+        });
+
+        $("#backButton").on("click", function (e) {
+          e.preventDefault();
+          $("#content2").hide();
+          $(".lp-row1").show();
+
+          $("#contentHeading").text("Welcome To MahaBHUJALkosh");
+        });
+      });
+    </script>
+  </body>
+</html>

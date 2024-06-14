@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MahaBHUJALkosh-Thematic</title>
+  <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.min.css" />
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+
+  <link rel="stylesheet" type="text/css" href="./css/thematic.css" />
+  <link rel="stylesheet" href="https://js.arcgis.com/3.45/esri/css/esri.css" />
+</head>
+
+<body class="d-flex flex-column h-100">
+  <header>
+    <nav class="navbar navbar-expand-lg tp-navbar">
+      <div class="container-fluid">
+        <!-- Logo on the left -->
+        <a class="navbar-brand" href="#">
+          <img src="./images/satyamev-Jayte.png" alt="Logo" class="tp-logo-nav" />
+          <img src="./images/GSDA.png" alt="Logo" class="tp-logo-nav1" />
+          <img src="./images/MRSAC.png" alt="Logo" class="tp-logo-nav2" />
+        </a>
+
+        <!-- Centered text with subtext -->
+        <div class="ml-auto text-center">
+          <span class="navbar-text">
+            <label class="tp-text1" data-bs-toggle="tooltip" data-bs-placement="bottom"
+              title="महा-भूजल-कोष">MahaBHUJALkosh</label>
+            <br />
+            <small class="tp-text2">A Digital Repository & Web Geo-Portal Based Decision Support
+              System</small>
+          </span>
+        </div>
+
+        <!-- Button on the right -->
+        <div class="ml-auto">
+          <!-- <a href="Geo-Tag//Images/MahaBHUJALkosh.pdf" class="btn btn-outline-primary ml-auto text-white" target="_blank"
+          data-bs-toggle="tooltip" data-bs-placement="bottom" title="About MahaBHUJALkosh">Index</a> -->
+
+          <a href="./index.html" class="btn btn-outline-primary ml-auto" data-bs-toggle="tooltip"
+            data-bs-placement="bottom" title="Home">
+            <i class="fas fa-home text-white" style="cursor: pointer"></i>
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main class="flex-shrink-0">
+    <div class="container-fluid d-flex flex-column h-100">
+      <div class="row d-flex-1 h-100">
+        <div class="col-md-6 bg-white">
+          <!-- Section 1 -->
+          <div class="section">
+            <h5 class="text-danger pt-4 pb-1 text-center tp-text4">
+              Rajiv Gandhi Drinking Water Mission Phase-IV, 1:50k Ground Water
+              Prospect Maps
+            </h5>
+            <p class="text tp-text3">
+              Ground water is the major source of drinking water in India. In
+              order to make ground water sustainable, there is a need to
+              understand the aquifer characteristics as well as its geological
+              setting. This understanding not only helps in designing
+              regulated withdrawal of ground water but also for planning
+              suitable mechanism for ground water recharge. It is estimated
+              that there are large number of habitations yet either
+              Not-Covered (NC) or Partially Covered (PC) with potable water
+              supply schemes mainly because the potential locations for the
+              occurrence of potable ground water could not be identified in
+              the immediate vicinity of such habitations.&nbsp;<a href="./doc/RGNationalDrinkingWater_UserManual.pdf"
+                target="blank" style="cursor: pointer">READ MORE</a>
+            </p>
+            <div class="col-md-12 bg-white">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="stateSelect tp-text5"><b>Select District</b></label>
+                      <select class="form-select form-select-sm" id="cmbdistrict">
+                        <option selected>-- select --</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="districtSelect tp-text5"><b>Select Taluka</b></label>
+                      <select class="form-select form-select-sm" id="cmbtaluka">
+                        <option selected>-- select --</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="talukaSelect tp-text5"><b>Select Village</b></label>
+                      <select class="form-select form-select-sm" id="cmbvillage">
+                        <option selected>-- select --</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12 bg-white mt-md-3">
+              <h4 class="text-center text-bg-secondary">Geo Pdf File</h4>
+              <div class="container-fluid tp-table">
+                <h4 id="nodatanode">No data</h4>
+                <table class="table" id="datalisttable">
+
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6" style="position: relative;">
+          <!-- Section 2 -->
+          <div class="section h-100" style="z-index: -1;" id="map">
+          </div>
+
+          <div class="layer-container bg-white shadow">
+            <div class="form-check ">
+              <input class="form-check-input" type="checkbox" id="rb_basemap" checked>
+              <label class="form-check-label" for="rb_basemap">
+                Basemap
+              </label>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer class="footer mt-auto py-1 tp-footer">
+    <div class="container-fluid tp-footer">
+      <div class="row ">
+        <div class="col-md-6 text-center text-md-start ">
+          <span><a class="lp-text8 footer-text " href="https://www.ceinsys.com/" target="_blank"
+              style="cursor: pointer">Developed and maintained by <strong class="text-primary"> CEINSYS TECH
+                LTD.</strong></a></span>
+        </div>
+
+        <div class="col-md-6 text-center text-md-end ">
+          <div class="lp-disclaimer text-white  footer-text">
+            <strong class="text-warning">Disclaimer :</strong> This expressly prohibits the copy
+            or duplication of any resources.
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- <footer class="footer d-none d-md-none d-lg-block mt-auto py-1 tp-footer">
+    <div class="container text-center">
+      <span class="text-white">Powered By Ceinsys Tech Ltd.</span>
+    </div>
+  </footer> -->
+
+  <script src="./lib/jquery/jquery.min.js"></script>
+  <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
+  <script src="./lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Initialize Bootstrap tooltips
+    $(function () {
+      $('[data-bs-toggle="tooltip"]').tooltip();
+    });
+  </script>
+  <script src="https://js.arcgis.com/3.45/"></script>
+  <script>
+    var map, highlightlayer;
+
+    require([
+      "esri/map",
+      "esri/layers/ArcGISTiledMapServiceLayer",
+      "esri/SpatialReference",
+      "esri/layers/ArcGISDynamicMapServiceLayer",
+      "esri/geometry/Extent",
+      "esri/layers/GraphicsLayer",
+      "esri/symbols/SimpleFillSymbol",
+      "esri/symbols/SimpleLineSymbol",
+      "esri/Color",
+      "esri/tasks/QueryTask",
+      "esri/tasks/query",
+      "dojo/domReady!",
+    ], function (
+      Map,
+      ArcGISTiledMapServiceLayer,
+      SpatialReference,
+      ArcGISDynamicMapServiceLayer,
+      Extent,
+      GraphicsLayer,
+      SimpleFillSymbol,
+      SimpleLineSymbol,
+      Color,
+      QueryTask,
+      Query
+    ) {
+      let defaultextent = new esri.geometry.Extent({
+        xmin: 7845664.260831968,
+        ymin: 1804323.8711238164,
+        xmax: 9234983.686942963,
+        ymax: 2646965.670939375,
+        spatialReference: { wkid: 102100 },
+      });
+
+      map = new Map("map", {
+        basemap: "topo-vector",
+        spatialReference: new SpatialReference(4326),
+        extent: defaultextent,
+        backgroundColor: new Color([255, 255, 255])
+      });
+
+      var highlightsymbol = new SimpleFillSymbol(
+        SimpleFillSymbol.STYLE_SOLID,
+        new SimpleLineSymbol(
+          SimpleLineSymbol.STYLE_DASHDOT,
+          new Color([255, 0, 0]),
+          2
+        ),
+        new Color([255, 255, 0, 0.25])
+      );
+
+      document
+        .querySelector("#cmbdistrict")
+        .addEventListener("change", (evt) => {
+          console.log("Selected district is " + evt.target.value);
+          highlightlayer.clear();
+          onSelectDistrict(evt.target.value);
+          fillTaluka(evt.target.value);
+        });
+      document
+        .querySelector("#cmbtaluka")
+        .addEventListener("change", (evt) => {
+          console.log("Selected taluka is " + evt.target.value);
+          highlightlayer.clear();
+          onSelectTaluka(evt.target.value);
+          fillVillage(evt.target.value);
+        });
+      document
+        .querySelector("#cmbvillage")
+        .addEventListener("change", (evt) => {
+          console.log("Selected village is " + evt.target.value);
+          highlightlayer.clear();
+          onSelectVillage(evt.target.value);
+        });
+
+      document
+        .querySelector("#rb_basemap")
+        .addEventListener("change", (evt) => {
+          let isBasemapOn = evt.target.checked
+
+          if (isBasemapOn) {
+            map.getLayer("layer0").show()
+            map.getLayer("layer1").show()
+          }
+          else {
+            map.getLayer("layer0").hide()
+            map.getLayer("layer1").hide()
+          }
+
+          console.log(`Basemap is ${isBasemapOn}`)
+
+        });
+
+      map.on("load", function () {
+        var tiled = new ArcGISDynamicMapServiceLayer(
+          "https://geoportal.ceinsys.com/server/rest/services/THEMATICS/MapServer",
+          {
+            id: "state",
+          }
+        );
+        map.addLayer(tiled);
+
+        // tiled.setVisibleLayers([1, 26]);
+
+        highlightlayer = new GraphicsLayer({ id: "highlightlayer" });
+        map.addLayer(highlightlayer);
+
+        fillDistrict();
+      });
+
+      let districtFeatureset = null;
+      function fillDistrict() {
+        let qt = new QueryTask(
+          "https://geoportal.ceinsys.com/server/rest/services/THEMATICS/MapServer/6"
+        );
+        let q = new Query();
+        q.outFields = ["DistrictCode", "DistrictName"];
+        q.outSpatialReference = map.spatialReference;
+        q.returnGeometry = true;
+        q.where = "1=1";
+        q.orderByFields = ["DistrictName"];
+        qt.execute(
+          q,
+          (featureset) => {
+            districtFeatureset = featureset;
+            console.log(featureset);
+
+            featureset.features.forEach((feature) => {
+              var opt = document.createElement("option");
+              opt.value = feature.attributes.DistrictCode;
+              opt.text = feature.attributes.DistrictName;
+              document.querySelector("#cmbdistrict").appendChild(opt);
+            });
+          },
+          (err) => console.error(err)
+        );
+      }
+
+      let talukaFeatureset = null;
+      function fillTaluka(districtcode) {
+        clearTaluka();
+        let qt = new QueryTask(
+          "https://geoportal.ceinsys.com/server/rest/services/THEMATICS/MapServer/5"
+        );
+        let q = new Query();
+        q.outFields = ["TalukaCode", "TalukaName"];
+        q.outSpatialReference = map.spatialReference;
+        q.returnGeometry = true;
+        q.where = `DistrictCode ='${districtcode}'`;
+        q.orderByFields = ["TalukaName"];
+        qt.execute(
+          q,
+          (featureset) => {
+            talukaFeatureset = featureset;
+            console.log(featureset);
+
+            featureset.features.forEach((feature) => {
+              var opt = document.createElement("option");
+              opt.value = feature.attributes.TalukaCode;
+              opt.text = feature.attributes.TalukaName;
+              document.querySelector("#cmbtaluka").appendChild(opt);
+            });
+          },
+          (err) => console.error(err)
+        );
+      }
+
+      function clearTaluka() {
+        talukaFeatureset = null;
+        let selectElement = document.querySelector("#cmbtaluka");
+        for (var i = selectElement.options.length - 1; i > 0; i--) {
+          selectElement.removeChild(selectElement.options[i]);
+        }
+      }
+      function clearVillage() {
+        talukaFeatureset = null;
+        let selectElement = document.querySelector("#cmbvillage");
+        for (var i = selectElement.options.length - 1; i > 0; i--) {
+          selectElement.removeChild(selectElement.options[i]);
+        }
+      }
+
+      let villageFeatureset = null;
+      function fillVillage(talukacode) {
+        clearVillage();
+        let qt = new QueryTask(
+          "https://geoportal.ceinsys.com/server/rest/services/THEMATICS/MapServer/4"
+        );
+        let q = new Query();
+        q.outFields = ["Village_code", "Village_name"];
+        q.outSpatialReference = map.spatialReference;
+        q.returnGeometry = true;
+        q.where = `Taluka_code ='${talukacode}'`;
+        q.orderByFields = ["Village_name"];
+        qt.execute(
+          q,
+          (featureset) => {
+            villageFeatureset = featureset;
+            console.log(featureset);
+
+            featureset.features.forEach((feature) => {
+              var opt = document.createElement("option");
+              opt.value = feature.attributes.Village_code;
+              opt.text = feature.attributes.Village_name;
+              document.querySelector("#cmbvillage").appendChild(opt);
+            });
+          },
+          (err) => console.error(err)
+        );
+      }
+
+      function onSelectDistrict(districtcode) {
+        if (districtFeatureset && districtcode != "") {
+          let feature = districtFeatureset.features.find(
+            (f) => f.attributes.DistrictCode == districtcode
+          );
+          if (feature) {
+            feature.setSymbol(highlightsymbol);
+            showpdf(feature);
+            highlightlayer.add(feature);
+            map.setExtent(feature.geometry.getExtent(), true);
+          }
+        } else {
+          map.setExtent(defaultextent, true);
+        }
+      }
+      function onSelectTaluka(talukacode) {
+        if (talukaFeatureset && talukacode != "") {
+          let feature = talukaFeatureset.features.find(
+            (f) => f.attributes.TalukaCode == talukacode
+          );
+          if (feature) {
+            feature.setSymbol(highlightsymbol);
+            showpdf(feature);
+            highlightlayer.add(feature);
+            map.setExtent(feature.geometry.getExtent(), true);
+          }
+        } else {
+          onSelectDistrict(document.querySelector("#cmbdistrict").value);
+        }
+      }
+      function onSelectVillage(villagecode) {
+        if (villageFeatureset && villagecode != "") {
+          let feature = villageFeatureset.features.find(
+            (f) => f.attributes.Village_code == villagecode
+          );
+          if (feature) {
+            feature.setSymbol(highlightsymbol);
+            showpdf(feature);
+            highlightlayer.add(feature);
+            map.setExtent(feature.geometry.getExtent(), true);
+          }
+        } else {
+          onSelectDistrict(document.querySelector("#cmbdtaluka").value);
+        }
+      }
+
+      function showpdf(feature) {
+        let tablenode = document.querySelector("#datalisttable");
+        tablenode.innerHTML = "";
+        document.querySelector("#nodatanode").style.display = "block";
+
+        if (!feature) return;
+
+        let qt = new QueryTask(
+          "https://geoportal.ceinsys.com/server/rest/services/THEMATICS/MapServer/2"
+        );
+        let q = new Query();
+        q.outFields = ["SOI_NAME"];
+        q.returnGeometry = false;
+        q.orderByFields = ["SOI_NAME"];
+        q.geometry = feature.geometry;
+        qt.execute(
+          q,
+          (featureset) => {
+            console.log(featureset);
+
+            if (featureset.features.length > 0) {
+              //
+
+              document.querySelector("#nodatanode").style.display = "none";
+
+              featureset.features.forEach((feature, idx) => {
+                let tr = document.createElement("tr");
+                let td = document.createElement("td");
+                td.innerHTML = idx + 1;
+                tr.appendChild(td);
+
+                let td1 = document.createElement("td");
+                // let a = document.createElement("a");
+                // a.href = `https://geoportal.ceinsys.com/gishome/pdf/gwm-${feature.attributes.SOI_NAME.replaceAll(
+                //   "/",
+                //   ""
+                // )}.pdf`;
+                // a.target = "_blank";
+                // a.innerHTML = feature.attributes.SOI_NAME;
+                td1.innerHTML = feature.attributes.SOI_NAME;
+                // td1.appendChild(a);
+                tr.appendChild(td1);
+
+                let td2 = document.createElement("td");
+                let a1 = document.createElement("a");
+                a1.href = `https://geoportal.ceinsys.com/gishome/pdf/gwm-${feature.attributes.SOI_NAME.replaceAll(
+                  "/",
+                  ""
+                )}.pdf`;
+                a1.target = "_blank";
+                a1.innerHTML = `<img style="height: 2em;" src="images/pdf image.png" >`;
+                td2.appendChild(a1);
+                tr.appendChild(td2);
+
+                tablenode.appendChild(tr);
+              });
+            }
+          },
+          (err) => console.error(err)
+        );
+      }
+    });
+  </script>
+</body>
+
+</html>

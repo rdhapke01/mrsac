@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.min.css" />
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+
+  <link rel="stylesheet" type="text/css" href="./css/dashboard.css" />
+</head>
+
+<body class="d-flex flex-column h-100">
+  <header>
+    <nav class="navbar navbar-expand-md navbar-dark sp-navbar">
+      <div class="container-fluid">
+        <!-- Logo on the left -->
+        <a class="navbar-brand" href="#">
+          <img src="./images/satyamev-Jayte.png" alt="Logo" width="24" height="47" />
+          <img src="./images/GSDA.png" alt="Logo" width="43" height="47" />
+          <img src="./images/MRSAC.png" alt="Logo" width="45" height="49" />
+        </a>
+
+        <!-- Centered text with subtext -->
+        <div class="ml-auto text-center">
+          <span class="navbar-text">
+            <label class="sp-text1" data-bs-toggle="tooltip" data-bs-placement="bottom"
+              title="महा-भूजल-कोष">MahaBHUJALkosh</label>
+            <br />
+            <small class="sp-text2">A Digital Repository & Web Geo Portal Based Decision Support
+              System</small>
+          </span>
+        </div>
+
+        <!-- Button on the right -->
+
+        <a href="./index.html" class="btn btn-outline-primary ml-auto" data-bs-toggle="tooltip"
+          data-bs-placement="bottom" title="Logout">
+          <i class="fas fa-sign-out-alt text-white sp-logout" style="cursor: pointer"></i>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- First Section: Image with Tabs -->
+
+  <main class="flex-shrink-0">
+    <!-- <div class="carousel-container position-relative h-100"> -->
+    <div class="container-fluid position-relative h-100 sp-image">
+      <div class="card-deck position-absolute top-50 start-50 translate-middle" style="z-index: 1">
+        <!-- bottom: 10%; -->
+        <div class="d-flex">
+          <div class="card mx-2 sp-tab">
+            <a target="_blank" href="https://geoportal.ceinsys.com/mrsac_gis"
+              class="card-body d-flex align-items-center justify-content-center text-center">
+              MRSAC
+            </a>
+          </div>
+          <div class="card mx-2 sp-tab">
+            <a target="_blank" href="https://geoportal.ceinsys.com/gsda_gis"
+              class="card-body d-flex align-items-center justify-content-center text-center">
+              GSDA
+            </a>
+          </div>
+          <div class="card mx-2 sp-tab">
+            <a target="_blank" href="https://geoportal.ceinsys.com/wssd_gis"
+              class="card-body d-flex align-items-center justify-content-center text-center">
+              WSSD
+            </a>
+          </div>
+          <div class="card mx-2 sp-tab">
+            <a target="_blank" href="https://geoportal.ceinsys.com/assetgeotag_gis"
+              class="card-body d-flex align-items-center justify-content-center text-center">
+              Asset Geotagging<br />
+              Field Data
+            </a>
+          </div>
+          <div class="card mx-2 sp-tab">
+            <a href="https://geoportal.ceinsys.com/dataintegration" target="_blank" href=""
+              class="card-body d-flex align-items-center justify-content-center text-center">
+              Data Analysis and Integration
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div id="carouselExampleAutoplaying" class="carousel slide h-100" data-bs-ride="carousel" data-bs-interval="1500">
+        <div class="carousel-inner h-100">
+          <div class="carousel-item active h-100">
+            <img src="./images/image4.png" class="d-block w-100 img-fluid" alt="image1" />
+          </div>
+          <div class="carousel-item h-100">
+            <img src="./images/statemap.png" class="d-block w-100 img-fluid" alt="image2" />
+          </div>
+          <div class="carousel-item h-100">
+            <img src="./images/Pune GSDA.jpg" class="d-block w-100 img-fluid" alt="image2" />
+          </div>
+          <div class="carousel-item h-100">
+            <img src="./images/Mumbai WSSD.jpg" class="d-block w-100 img-fluid" alt="image2" />
+          </div>
+          <div class="carousel-item h-100">
+            <img src="./images/Nagpur MRSAC1.jpg" class="d-block w-100 img-fluid" alt="image2" />
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div> -->
+    </div>
+  </main>
+
+  <footer class="footer mt-auto py-1 sp-footer">
+    <div class="container text-center">
+      <span class="text-white">Powered By Ceinsys Tech Ltd.</span>
+    </div>
+  </footer>
+
+  <script src="./lib/jquery/jquery.min.js"></script>
+  <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
+  <script src="./lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Initialize Bootstrap tooltips
+    $(function () {
+      $('[data-bs-toggle="tooltip"]').tooltip();
+    });
+  </script>
+</body>
+
+</html>
